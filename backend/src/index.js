@@ -11,10 +11,10 @@ const startServer = async () => {
     typeDefs,
     resolvers
   });
-   await server.start();
-   server.applyMiddleware({ app });
+  await server.start();
+  server.applyMiddleware({ app });
 
-   mongoose.connect("mongodb://127.0.0.1:27017/cats", {
+  await mongoose.connect("mongodb://localhost:27017/e_commerce", {
     useNewUrlParser: true
   });
 
