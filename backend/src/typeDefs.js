@@ -3,54 +3,99 @@ import { gql } from "apollo-server-express";
 export const typeDefs = gql`
   type Query {
     hello: String!
-    cats: [Cat!]!
-    dogs: [Dog!]!
     persons:[Person!]!
   }
 
-  type Cat {
-    id: ID!
-    name: String!
-  }
 
-  type Dog {
-    id: ID!
-    name: String!
-  }
-  input address {
+  input address_input {
     address_line1: String,
     city: String
     state: String
     pobox: String
   }
-  input address_index {
+
+  type address {
+    address_line1: String,
+    city: String
+    state: String
+    pobox: String
+  }
+
+  input address_index_input {
+    present:address_input
+    permananet:address_input
+    both_same: Boolean
+    preferred_address:String 
+  }
+
+  type address_index {
     present:address
     permananet:address
     both_same: Boolean
     preferred_address:String 
   }
-  input phone {
-    ph:Int
+
+  input phone_input {
+    ph:String
     isPrimary:Boolean
-    type:String
+    ph_type:String
   }
-  input email {
+
+  type phone {
+    ph:String
+    isPrimary:Boolean
+    ph_type:String
+  }
+
+  input email_input {
     email:String
     isPrimary:Boolean
-    type:String
+    e_type:String
   }
-  input sn {
+
+  type email {
+    email:String
+    isPrimary:Boolean
+    e_type:String
+  }
+
+  input sn_input {
     address:String
-    type:String
+    sn_type:String
   }
-  input contact {
-    telephonic:[phone],
-    mobile:[phone],
-    e_mail:[email],
-    social_profile:[sn]
+
+  type sn {
+    address:String
+    sn_type:String
+  }
+
+  input contact_input {
+    telephonic:[phone_input],
+    mobile:[phone_input],
+    e_mail:[email_input],
+    social_profile:[sn_input]
  }
 
-  input Person {
+ type contact {
+  telephonic:[phone],
+  mobile:[phone],
+  e_mail:[email],
+  social_profile:[sn]
+}
+
+ input Person_input {
+    id: ID!
+    username: String
+    first_name: String
+    second_name: String
+    age: Int
+    dob: String
+    gender: String
+    addresss: address_index_input
+    contacts: contact_input
+  }
+
+  type Person {
     id: ID!
     username: String
     first_name: String
@@ -63,14 +108,6 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    createCat(name: String!): Cat!
-  }
-
-  type Mutation {
-    createDog(name: String!): Dog!
-  }
-
-  type Mutation {
-    createPerson(name : String!): Person!
+    createPerson(input : Person_input!): Person!
   }
 `;

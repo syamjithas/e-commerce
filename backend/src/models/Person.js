@@ -24,9 +24,16 @@ export const Person = mongoose.model("Person", {
     preferred_address:String 
   },
   contacts:{
-      telephonic:[{ph:Number,isPrimary:Boolean,type:String}],
-      mobile:[{ph:Number,isPrimary:Boolean,type:String}],
-      e_mail:[{email:Number,isPrimary:Boolean,type:String}],
-      social_profile:[{address:String,type:String}]
+      telephonic:[{ph:String,
+        isPrimary:Boolean,
+        ph_type:String}],
+      mobile:[{ph:String,
+        isPrimary:Boolean,
+        ph_type:String}],
+      e_mail:[{email:String,
+        isPrimary:Boolean,
+        e_type:String}],
+      social_profile:[{address:String,
+        sn_type:String}]
   }
 });

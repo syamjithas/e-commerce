@@ -1,0 +1,108 @@
+mutation  {
+    createPerson(input: {
+      username : "syamjithas"
+      first_name : "syamjith"
+      second_name :"sasidharan"
+      age : 28
+      dob : "5/4/1993"
+      gender : "M"
+      addresss :{ 
+        present :{
+          city :"Koothattukulam"
+          state:"kerala"
+          pobox:"686662"
+          address_line1:"Ayithanthu house"
+        }
+        permananet :{
+          city :"Koothattukulam"
+          state:"kerala"
+          pobox:"686662"
+          address_line1:"Ayithanthu house one"
+        }
+        both_same:false
+        preferred_address:"permananet"
+      }
+      contacts :{
+        telephonic :[{
+          ph:"7403114596" 
+          isPrimary: true
+          ph_type:"home"
+        },
+          ph:"7403114596" 
+          ph_type:"home"
+        }]
+        mobile :[{
+          ph: "7403114596" 
+          isPrimary: true
+          ph_type:"home"
+        },
+        {
+          ph: "7403114596" 
+          ph_type:"home"
+        }]
+        social_profile: [{
+          sn_type : "insta"
+          address:"syamjith"
+        },
+        {
+          sn_type : "face"
+          address:"syamjith"
+        }]
+        e_mail :[{
+          e_type :"personal"
+          isPrimary:true
+          email:"syamjithas@gmail.com"
+        },
+        {
+          e_type :"personal"
+          email:"syamjithas@gmail.com"
+        }]
+      }
+      id:11
+  }) {
+      username
+      first_name
+      second_name
+      age
+      dob
+      gender
+      addresss {
+        present {
+          city
+          state
+          pobox
+          address_line1
+        }
+        permananet {
+          address_line1
+          city
+          state
+          pobox
+        }
+        both_same
+        preferred_address
+      }
+      contacts {
+        telephonic {
+          ph
+          isPrimary
+          ph_type
+        }
+        mobile {
+          ph_type
+          isPrimary
+          ph
+        }
+        social_profile {
+          sn_type
+          address
+        }
+        e_mail {
+          e_type
+          isPrimary
+          email
+        }
+      }
+      id
+    }
+  }
